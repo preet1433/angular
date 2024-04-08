@@ -1,2 +1,18 @@
-<p-button label="Submit"></p-button>
-<h1>hy</h1>
+<p-button label="category" (click)="category_btn_click()"></p-button>
+<p-button label="iyughioyufyvhhioyguyf" (click)="abcd()"></p-button>
+
+<div *ngIf="flag_of_category_div">
+    <!-- {{apidata | json}} -->
+<fieldset>
+    <legend>select your Category</legend>
+
+    <div *ngFor="let category of category_dynamic_data" class="field-checkbox">
+        <p-checkbox [label]="category" name="group" [value]="category" [(ngModel)]="category_checked_value"></p-checkbox>
+        <br>
+    </div>
+</fieldset>
+
+</div>
+
+
+    
