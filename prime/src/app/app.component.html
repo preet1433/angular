@@ -7,9 +7,14 @@
     <legend>select your Category</legend>
 
     <div *ngFor="let category of category_dynamic_data" class="field-checkbox">
-        <p-checkbox [label]="category" name="group" [value]="category" [(ngModel)]="category_checked_value"></p-checkbox>
-        <br>
+        <p-checkbox [label]="category" name="group" [value]="category" [(ngModel)]="category_checked_value"
+        >
+        <br></p-checkbox>
+       
+
     </div>
+
+    <p-button label="search" (click)="abcd()"></p-button>
 </fieldset>
 
 </div>

@@ -64,7 +64,7 @@ this.category_dynamic_data=distinctArray
 
 
 abcd(){
-  console.log('iuyghcviuy7t6rtdfdghut6r5e4ers');
+  console.log(this.category_checked_value);
   
 }
 }
