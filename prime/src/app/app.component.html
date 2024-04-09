@@ -1,6 +1,20 @@
-<p-button label="category" (click)="category_btn_click()"></p-button>
-<p-button label="iyughioyufyvhhioyguyf" (click)="abcd()"></p-button>
 
+<div>
+    <p-button label="category" (click)="category_btn_click()"  icon="pi pi-angle-double-down"></p-button>&nbsp;
+    <p-button label="brand" (click)="brand_wise_data_search()"  icon="pi pi-angle-double-down"></p-button>
+
+
+</div>
+<hr>    
+
+        <!-- <p-button label="iyughioyufyvhhioyguyf" ></p-button> -->
+   
+
+
+
+<br>
+
+<!-- check box of the category field  -->
 <div *ngIf="flag_of_category_div">
     <!-- {{apidata | json}} -->
 <fieldset>
@@ -14,10 +28,136 @@
 
     </div>
 
-    <p-button label="search" (click)="abcd()"></p-button>
+    <p-button label="search" (click)="result_of_checkbox()"></p-button>
 </fieldset>
 
 </div>
+<!-- image display of the category field  -->
 
 
+
+    <div   *ngIf="flag_of_category_reult">
+        <fieldset >
+            <div class="card flex justify-content-center">
+                <p-fieldset legend="Category" [toggleable]="true">
+                    
+                    <div class="card" >
+                        <div style="width: 100%; height: 450px; overflow: auto" class="m">
+                           
+                            <div *ngFor="let data of category_data_push;let i=index">
+
+                   
+                                <p-card header="{{data.title}}" subheader="Price: ${{data.price}}" [style]="{ width: '370px' , height:'550px'}">
+                                    <ng-template pTemplate="header">
+                                        
+                                            <!-- <h4>{{i+1}}</h4> -->
+                                        
+                                        <img alt="Card" src="{{data.thumbnail}}"  [style]="{height:'200px'}"/>
+                                    </ng-template>
+                                    <p>
+                                        {{data.description}}
+                                    </p>
+                                    <p>
+                                       Ratings: {{data.rating}}
+                                    </p>
+                                    
+            
+                                    <ng-template pTemplate="footer">
+                                        <p-button label="add tocart" class="btn1" [style]="{ 'position':'relative','margin-top': '-34px' }" icon="pi pi-check" (click)="add_to_cart(data)"></p-button>
+                                        <!-- <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{ 'margin-left': '.5em' }"></p-button> -->
+                                    </ng-template>
+                                </p-card>
+            
+                                <p-scrollTop target="parent" styleClass="custom-scrolltop" [threshold]="100" icon="pi pi-arrow-up" ></p-scrollTop>                        </div>
+                            </div>
+
+                        </div>
+                        
+                    </p-fieldset>
+            </div>
+
+                <p-button label="submit" severity="success" (click)="category_reset_button()"></p-button>
+                <p-button label="Back To previous" severity="danger"  (click)="category_reset_button()"></p-button>
+
+                
+                <i class="pi pi-shopping-cart" style="font-size: 2.5rem" pBadge severity="success" value={{cart_item_count}}>
+                    
+                </i>
+        </fieldset>
+    </div>
+
+
+    <!-- brand wise data search ####################################################################### -->
+<div *ngIf="div_flag_of_brand">
+    <!-- {{brand_dynamic_data | json}} -->
+   <span class="p-float-label">
+        <p-dropdown [options]="brand_dynamic_data" [(ngModel)]="dd_selected_value" (onChange)="dropsinglevalue()" placeholder="Select a category"  inputId="float-label"></p-dropdown>
+        <label for="float-label">Select a category</label>
+    </span> 
+
+    <!-- this for the brand check box display  -->
+    <hr>
+    
+
+    <div *ngIf="brand_checkbox_flag">
+    <div *ngFor="let branddisplay of brand_display" class="field-checkbox">
+        <p-checkbox [label]="branddisplay" name="group" [value]="branddisplay" [(ngModel)]="brand_checked_value">
+        <br></p-checkbox>
+       
+
+    </div>
+    <p-button label="search" (click)="brand_check_selected()"></p-button>
+</div>
+
+</div>
+<!-- brand result here from after check box -->
+<div   >
+    <fieldset >
+        <div class="card flex justify-content-center">
+            <p-fieldset legend="Brand" [toggleable]="true">
+                
+                <div class="card" >
+                    <div style="width: 100%; height: 450px; overflow: auto" class="m">
+                       
+                        <div *ngFor="let data of brand_data_in_card;let i=index">
+
+               
+                            <p-card header="{{data.title}}" subheader="Price: ${{data.price}}" [style]="{ width: '370px' , height:'550px'}">
+                                <ng-template pTemplate="header">
+                                    
+                                        <!-- <h4>{{i+1}}</h4> -->
+                                    
+                                    <img alt="Card" src="{{data.thumbnail}}"  [style]="{height:'200px'}"/>
+                                </ng-template>
+                                <p>
+                                    {{data.description}}
+                                </p>
+                                <p>
+                                   Ratings: {{data.rating}}
+                                </p>
+                                
+        
+                                <ng-template pTemplate="footer">
+                                    <p-button label="add tocart" class="btn1" [style]="{ 'position':'relative','margin-top': '-34px' }" icon="pi pi-check" (click)="add_to_cart(data)"></p-button>
+                                    <!-- <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{ 'margin-left': '.5em' }"></p-button> -->
+                                </ng-template>
+                            </p-card>
+        
+                            <p-scrollTop target="parent" styleClass="custom-scrolltop" [threshold]="100" icon="pi pi-arrow-up" ></p-scrollTop>                        </div>
+                        </div>
+
+                    </div>
+                    
+                </p-fieldset>
+        </div>
+
+            <p-button label="submit" severity="success" (click)="category_reset_button()"></p-button>
+            <p-button label="Back To previous" severity="danger"  (click)="category_reset_button()"></p-button>
+
+            
+            <i class="pi pi-shopping-cart" style="font-size: 2.5rem" pBadge severity="success" value={{cart_item_count}}>
+                
+            </i>
+    </fieldset>
+</div>
     

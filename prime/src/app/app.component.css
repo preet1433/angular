@@ -1,0 +1,11 @@
+.m{
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 2%;
+    justify-content: center;
+}
+.btn1{
+    position: relative !important;
+    margin-top: -34px !important ;
+}
+
