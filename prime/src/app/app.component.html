@@ -1,7 +1,8 @@
 
 <div>
     <p-button label="category" (click)="category_btn_click()"  icon="pi pi-angle-double-down"></p-button>&nbsp;
-    <p-button label="brand" (click)="brand_wise_data_search()"  icon="pi pi-angle-double-down"></p-button>
+    <p-button label="brand" (click)="brand_wise_data_search()"  icon="pi pi-angle-double-down"></p-button>&nbsp;
+    <p-button label="disco" (click)="brand_wise_data_search()"  icon="pi pi-angle-double-down"></p-button>&nbsp;
 
 
 </div>
@@ -21,8 +22,7 @@
     <legend>select your Category</legend>
 
     <div *ngFor="let category of category_dynamic_data" class="field-checkbox">
-        <p-checkbox [label]="category" name="group" [value]="category" [(ngModel)]="category_checked_value"
-        >
+        <p-checkbox [label]="category" name="group" [value]="category" [(ngModel)]="category_checked_value">
         <br></p-checkbox>
        
 
@@ -60,6 +60,10 @@
                                     <p>
                                        Ratings: {{data.rating}}
                                     </p>
+
+                                    <p>
+                                        Discount: {{data.discountPercentage}}
+                                     </p>
                                     
             
                                     <ng-template pTemplate="footer">
@@ -76,8 +80,8 @@
                     </p-fieldset>
             </div>
 
-                <p-button label="submit" severity="success" (click)="category_reset_button()"></p-button>
-                <p-button label="Back To previous" severity="danger"  (click)="category_reset_button()"></p-button>
+                <p-button label="submit" severity="success" (click)="category_reset_button()"></p-button>&nbsp;
+                <p-button label="Back To previous" severity="danger"  (click)="category_reset_button()"></p-button>&nbsp;
 
                 
                 <i class="pi pi-shopping-cart" style="font-size: 2.5rem" pBadge severity="success" value={{cart_item_count}}>
@@ -111,7 +115,7 @@
 
 </div>
 <!-- brand result here from after check box -->
-<div   >
+<div *ngIf="brand_div_flag_of_brand_display">
     <fieldset >
         <div class="card flex justify-content-center">
             <p-fieldset legend="Brand" [toggleable]="true">
@@ -143,7 +147,8 @@
                                 </ng-template>
                             </p-card>
         
-                            <p-scrollTop target="parent" styleClass="custom-scrolltop" [threshold]="100" icon="pi pi-arrow-up" ></p-scrollTop>                        </div>
+                            <p-scrollTop target="parent" styleClass="custom-scrolltop" [threshold]="100" icon="pi pi-arrow-up" ></p-scrollTop>   
+                                             </div>
                         </div>
 
                     </div>
@@ -151,13 +156,17 @@
                 </p-fieldset>
         </div>
 
-            <p-button label="submit" severity="success" (click)="category_reset_button()"></p-button>
+            <p-button label="submit" severity="success" (click)="category_reset_button()"></p-button>&nbsp;
             <p-button label="Back To previous" severity="danger"  (click)="category_reset_button()"></p-button>
 
             
-            <i class="pi pi-shopping-cart" style="font-size: 2.5rem" pBadge severity="success" value={{cart_item_count}}>
-                
-            </i>
+            <i class="pi pi-shopping-cart" style="font-size: 2.5rem" pBadge severity="success" value={{cart_item_count}}>            </i>
     </fieldset>
+</div>
+
+
+<div *ngIf="discount_first_flag">
+    <p-checkbox  [binary]="true" inputId="binary" class="ng-invalid ng-dirty"></p-checkbox>
+    <label>0-10</label>
 </div>
     

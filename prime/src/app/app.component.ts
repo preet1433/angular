@@ -40,6 +40,9 @@ public category_checked_value:any
 //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ
 category_btn_click(){
   this.flag_of_category_div=true
+this.flag_of_category_reult=false
+this.div_flag_of_brand=false
+this.brand_div_flag_of_brand_display=false
   this.category_array=[]
 this.apidata.forEach((element:any) => {
   this.category_array.push(element)
@@ -108,26 +111,36 @@ console.log(this.cart_item_count);
 }
 
 //#########        BRAND  WISE  DATA  SEARCH      ###############################################
-public div_flag_of_brand:boolean=false
 public brand_dynamic_data: any=[]
 public brand_array:any=[]
 
 
+public brand_data_in_card:any =[]
+public brand_checked_value:any
 public dd_selected_value:any
+
+public brand_display:any=[]
+
+///////////// flagsflagsflagsflagsflagsflagsflagsflagsflagsflagsflagsflagsflagsflags
+public brand_checkbox_flag:boolean=false
+public brand_div_flag_of_brand_display:boolean=false
+public div_flag_of_brand:boolean=false
+
+
 
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-
-
+//1111111111
 brand_wise_data_search(){
 
   this.div_flag_of_brand=true
   
   this.flag_of_category_div=false
   this.flag_of_category_reult=false
+  this.brand_div_flag_of_brand_display=false
+  
 
 console.log('hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh');
-
 
 this.apidata.forEach((element:any) => {
   this.brand_array.push(element)
@@ -145,8 +158,7 @@ console.log('hello'+this.category_dynamic_data)
 
 }
 
-public brand_display:any=[]
-public brand_checkbox_flag:boolean=false
+///2222222222222
 dropsinglevalue(){
   this.brand_display=[]  
   this.apidata.forEach((data:any)=>{
@@ -169,8 +181,12 @@ this.brand_dynamic_data=distinctArray
 
 
 }
-public brand_data_in_card:any =[]
-public brand_checked_value:any
+
+
+
+
+
+//3333333333333333333
 brand_check_selected(){
 
   this.apidata.forEach((data:any)=>{
@@ -180,8 +196,20 @@ brand_check_selected(){
     }
   }
 )
+  
+this.brand_div_flag_of_brand_display=true
+this.div_flag_of_brand=false
 console.log(this.brand_data_in_card)
 }
+
+/////////////   DiscountDiscountDiscountDiscountDiscountDiscountDiscountDiscountDiscount 
+public discount_first_flag:boolean=true
+public checkbox_0to:any
+
+
+
+
+
 
 
 }
